@@ -16,9 +16,9 @@ REM call npm install -g create-react-app
 REM call npm install -g expo-cli
 
 
-REM for /D %%J IN (C:\opt\demo-fullstack\*) DO (
-REM rd /s /q %%J
-REM )
+for /D %%J IN (C:\opt\demo-fullstack\*) DO (
+rd /s /q %%J
+)
 
 call composer create-project laravel/laravel laravel-api --prefer-dist
 call composer create-project laravel/laravel laravel-vue --prefer-dist
@@ -32,16 +32,18 @@ call composer require laravel/passport
 
 )
 cd C:\opt\demo-fullstack\laravel-api
-php artisan make:crud-api Author
-php artisan make:crud-api Books
-php artisan make:crud-api Gender
+php artisan make:crud-api Autor
+php artisan make:crud-api Livro
+php artisan make:crud-api Genero
+php artisan make:crud-api Editora
 
 cd C:\opt\demo-fullstack\laravel-bootstrap
 call composer require laravel/ui
 php artisan ui bootstrap --auth
-php artisan make:crud Author
-php artisan make:crud Books
-php artisan make:crud Gender
+php artisan make:crud Autor
+php artisan make:crud Livro
+php artisan make:crud Genero
+php artisan make:crud Editora
 
 cd C:\opt\demo-fullstack\laravel-vue
 call composer require laravel/ui

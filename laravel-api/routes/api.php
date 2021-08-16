@@ -19,46 +19,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /*
- * Authors Endpoints
+ * Autors Endpoints
  */
-Route::middleware('auth:api')->resource('authors', App\Http\Controllers\Api\AuthorController::class)->names('api.authors');
+Route::middleware('auth:api')->resource('autors', App\Http\Controllers\Api\AutorController::class)->names('api.autors');
 
 /*
- * Books Endpoints
+ * Livros Endpoints
  */
-Route::middleware('auth:api')->resource('books', App\Http\Controllers\Api\BooksController::class)->names('api.books');
+Route::middleware('auth:api')->resource('livros', App\Http\Controllers\Api\LivroController::class)->names('api.livros');
 
 /*
- * Genders Endpoints
+ * Generos Endpoints
  */
-Route::middleware('auth:api')->resource('genders', App\Http\Controllers\Api\GenderController::class)->names('api.genders');
+Route::middleware('auth:api')->resource('generos', App\Http\Controllers\Api\GeneroController::class)->names('api.generos');
 
 /*
- * Authors Endpoints
+ * Editoras Endpoints
  */
-Route::middleware('auth:api')->resource('authors', App\Http\Controllers\Api\AuthorController::class)->names('api.authors');
-
-/*
- * Books Endpoints
- */
-Route::middleware('auth:api')->resource('books', App\Http\Controllers\Api\BooksController::class)->names('api.books');
-
-/*
- * Genders Endpoints
- */
-Route::middleware('auth:api')->resource('genders', App\Http\Controllers\Api\GenderController::class)->names('api.genders');
-
-/*
- * Authors Endpoints
- */
-Route::middleware('auth:api')->resource('authors', App\Http\Controllers\Api\AuthorController::class)->names('api.authors');
-
-/*
- * Books Endpoints
- */
-Route::middleware('auth:api')->resource('books', App\Http\Controllers\Api\BooksController::class)->names('api.books');
-
-/*
- * Genders Endpoints
- */
-Route::middleware('auth:api')->resource('genders', App\Http\Controllers\Api\GenderController::class)->names('api.genders');
+Route::middleware('auth:api')->resource('editoras', App\Http\Controllers\Api\EditoraController::class)->names('api.editoras');

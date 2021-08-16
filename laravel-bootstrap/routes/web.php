@@ -22,24 +22,21 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /*
- * Authors Routes
+ * Autors Routes
  */
-Route::resource('authors', App\Http\Controllers\AuthorController::class);
+Route::resource('autors', App\Http\Controllers\AutorController::class);
 
 /*
- * Books Routes
+ * Livros Routes
  */
-Route::resource('books', App\Http\Controllers\BooksController::class);
+Route::resource('livros', App\Http\Controllers\LivroController::class);
 
 /*
- * Genders Routes
+ * Generos Routes
  */
-Route::resource('genders', App\Http\Controllers\GenderController::class);
+Route::resource('generos', App\Http\Controllers\GeneroController::class);
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/*
+ * Editoras Routes
+ */
+Route::resource('editoras', App\Http\Controllers\EditoraController::class);
