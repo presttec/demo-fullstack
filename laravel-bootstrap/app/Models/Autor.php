@@ -9,17 +9,18 @@ use Illuminate\Database\Eloquent\Model;
 class Autor extends Model
 {
     use HasFactory;
+    protected $table = 'autores';
 
-    protected $fillable = ['name', 'description', 'creator_id'];
+    protected $fillable = ['nome', 'biografia', 'ano_nascimento', 'sexo', 'nacionalidade', 'quantidade', 'creator_id'];
 
     public function getNameLinkAttribute()
     {
         $title = __('app.show_detail_title', [
-            'name' => $this->name, 'type' => __('autor.autor'),
+            'nome' => $this->nome, 'type' => __('autor.autor'),
         ]);
-        $link = '<a href="'.route('autors.show', $this).'"';
+        $link = '<a href="'.route('autores.show', $this).'"';
         $link .= ' title="'.$title.'">';
-        $link .= $this->name;
+        $link .= $this->nome;
         $link .= '</a>';
 
         return $link;

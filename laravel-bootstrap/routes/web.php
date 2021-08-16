@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::permanentRedirect('/', '/login');
 
 Auth::routes();
 
@@ -24,7 +22,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /*
  * Autors Routes
  */
-Route::resource('autors', App\Http\Controllers\AutorController::class);
+Route::resource('autores', App\Http\Controllers\AutorController::class);
 
 /*
  * Livros Routes

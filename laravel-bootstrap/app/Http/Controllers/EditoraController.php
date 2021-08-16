@@ -15,7 +15,7 @@ class EditoraController extends Controller
     public function index()
     {
         $editoraQuery = Editora::query();
-        $editoraQuery->where('name', 'like', '%'.request('q').'%');
+        $editoraQuery->where('nome', 'like', '%'.request('q').'%');
         $editoras = $editoraQuery->paginate(25);
 
         return view('editoras.index', compact('editoras'));
@@ -44,11 +44,11 @@ class EditoraController extends Controller
         $this->authorize('create', new Editora);
 
         $newEditora = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
+            'nome'        => 'required|max:60',
+            'descricao' => 'nullable|max:255',
         ]);
         $newEditora['creator_id'] = auth()->id();
-
+		$newEditora['quantidade'] = 0;
         $editora = Editora::create($newEditora);
 
         return redirect()->route('editoras.show', $editora);
@@ -91,7 +91,7 @@ class EditoraController extends Controller
 
         $editoraData = $request->validate([
             'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
+            'descricao' => 'nullable|max:255',
         ]);
         $editora->update($editoraData);
 

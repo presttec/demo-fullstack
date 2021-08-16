@@ -9,17 +9,18 @@ use Illuminate\Database\Eloquent\Model;
 class Genero extends Model
 {
     use HasFactory;
+    protected $table = 'generos';
 
-    protected $fillable = ['name', 'description', 'creator_id'];
+    protected $fillable = ['nome', 'descricao', 'quantidade', 'creator_id'];
 
     public function getNameLinkAttribute()
     {
         $title = __('app.show_detail_title', [
-            'name' => $this->name, 'type' => __('genero.genero'),
+            'nome' => $this->nome, 'type' => __('genero.genero'),
         ]);
         $link = '<a href="'.route('generos.show', $this).'"';
         $link .= ' title="'.$title.'">';
-        $link .= $this->name;
+        $link .= $this->nome;
         $link .= '</a>';
 
         return $link;

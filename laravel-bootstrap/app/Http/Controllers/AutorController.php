@@ -4,9 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Autor;
 use Illuminate\Http\Request;
+use App\Http\Requests\AutorRequest;
 
 class AutorController extends Controller
 {
+	
+	protected function process_form(Request $request){
+		$data = array();
+		$data['nome'] = $request->input('nome');
+		$data['biografia'] = $request->input('biografia');
+		$data['ano_nascimento'] = $request->input('ano_nascimento');
+		$data['sexo'] = $request->input('sexo');
+		$data['nacionalidade'] = $request->input('nacionalidade');
+		$data['quantidade'] = 0;
+		return $data;
+	}
+	
+	
     /**
      * Display a listing of the autor.
      *
@@ -15,7 +29,7 @@ class AutorController extends Controller
     public function index()
     {
         $autorQuery = Autor::query();
-        $autorQuery->where('name', 'like', '%'.request('q').'%');
+        $autorQuery->where('nome', 'like', '%'.request('q').'%');
         $autors = $autorQuery->paginate(25);
 
         return view('autors.index', compact('autors'));
@@ -39,19 +53,16 @@ class AutorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(AutorRequest $request)
     {
         $this->authorize('create', new Autor);
 
-        $newAutor = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
-        ]);
+        $newAutor = $this->process_form($request);
         $newAutor['creator_id'] = auth()->id();
 
         $autor = Autor::create($newAutor);
 
-        return redirect()->route('autors.show', $autor);
+        return redirect()->route('autores.show', $autor);
     }
 
     /**
@@ -85,17 +96,14 @@ class AutorController extends Controller
      * @param  \App\Models\Autor  $autor
      * @return \Illuminate\Routing\Redirector
      */
-    public function update(Request $request, Autor $autor)
+    public function update(AutorRequest $request, Autor $autor)
     {
         $this->authorize('update', $autor);
 
-        $autorData = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
-        ]);
+        $autorData = $this->process_form($request);
         $autor->update($autorData);
 
-        return redirect()->route('autors.show', $autor);
+        return redirect()->route('autores.show', $autor);
     }
 
     /**
@@ -112,7 +120,7 @@ class AutorController extends Controller
         $request->validate(['autor_id' => 'required']);
 
         if ($request->get('autor_id') == $autor->id && $autor->delete()) {
-            return redirect()->route('autors.index');
+            return redirect()->route('autores.index');
         }
 
         return back();

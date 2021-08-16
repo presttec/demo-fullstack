@@ -15,7 +15,7 @@ class GeneroController extends Controller
     public function index()
     {
         $generoQuery = Genero::query();
-        $generoQuery->where('name', 'like', '%'.request('q').'%');
+        $generoQuery->where('nome', 'like', '%'.request('q').'%');
         $generos = $generoQuery->paginate(25);
 
         return view('generos.index', compact('generos'));
@@ -44,10 +44,11 @@ class GeneroController extends Controller
         $this->authorize('create', new Genero);
 
         $newGenero = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
+            'nome'        => 'required|max:60',
+            'descricao' => 'nullable|max:255',
         ]);
         $newGenero['creator_id'] = auth()->id();
+        $newGenero['quantidade'] = 0;
 
         $genero = Genero::create($newGenero);
 
@@ -90,8 +91,8 @@ class GeneroController extends Controller
         $this->authorize('update', $genero);
 
         $generoData = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
+            'nome'        => 'required|max:60',
+            'descricao' => 'nullable|max:255',
         ]);
         $genero->update($generoData);
 

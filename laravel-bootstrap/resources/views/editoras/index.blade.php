@@ -29,8 +29,8 @@
                 <thead>
                     <tr>
                         <th class="text-center">{{ __('app.table_no') }}</th>
-                        <th>{{ __('editora.name') }}</th>
-                        <th>{{ __('editora.description') }}</th>
+                        <th>{{ __('editora.nome') }}</th>
+                        <th>{{ __('editora.descricao') }}</th>
                         <th class="text-center">{{ __('app.action') }}</th>
                     </tr>
                 </thead>
@@ -38,8 +38,8 @@
                     @foreach($editoras as $key => $editora)
                     <tr>
                         <td class="text-center">{{ $editoras->firstItem() + $key }}</td>
-                        <td>{!! $editora->name_link !!}</td>
-                        <td>{{ $editora->description }}</td>
+                        <td>{!! $editora->nome_link !!}</td>
+                        <td>{{ $editora->descricao }}</td>
                         <td class="text-center">
                             @can('view', $editora)
                                 <a href="{{ route('editoras.show', $editora) }}" id="show-editora-{{ $editora->id }}">{{ __('app.show') }}</a>

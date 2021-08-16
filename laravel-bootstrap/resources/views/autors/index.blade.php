@@ -6,7 +6,7 @@
 <div class="mb-3">
     <div class="float-right">
         @can('create', new App\Models\Autor)
-            <a href="{{ route('autors.create') }}" class="btn btn-success">{{ __('autor.create') }}</a>
+            <a href="{{ route('autores.create') }}" class="btn btn-success">{{ __('autor.create') }}</a>
         @endcan
     </div>
     <h1 class="page-title">{{ __('autor.list') }} <small>{{ __('app.total') }} : {{ $autors->total() }} {{ __('autor.autor') }}</small></h1>
@@ -22,7 +22,7 @@
                         <input placeholder="{{ __('autor.search_text') }}" name="q" type="text" id="q" class="form-control mx-sm-2" value="{{ request('q') }}">
                     </div>
                     <input type="submit" value="{{ __('autor.search') }}" class="btn btn-secondary">
-                    <a href="{{ route('autors.index') }}" class="btn btn-link">{{ __('app.reset') }}</a>
+                    <a href="{{ route('autores.index') }}" class="btn btn-link">{{ __('app.reset') }}</a>
                 </form>
             </div>
             <table class="table table-sm table-responsive-sm table-hover">
@@ -42,7 +42,7 @@
                         <td>{{ $autor->description }}</td>
                         <td class="text-center">
                             @can('view', $autor)
-                                <a href="{{ route('autors.show', $autor) }}" id="show-autor-{{ $autor->id }}">{{ __('app.show') }}</a>
+                                <a href="{{ route('autores.show', $autor) }}" id="show-autor-{{ $autor->id }}">{{ __('app.show') }}</a>
                             @endcan
                         </td>
                     </tr>

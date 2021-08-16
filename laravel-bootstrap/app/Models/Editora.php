@@ -9,17 +9,18 @@ use Illuminate\Database\Eloquent\Model;
 class Editora extends Model
 {
     use HasFactory;
+    protected $table = 'editoras';
 
-    protected $fillable = ['name', 'description', 'creator_id'];
+    protected $fillable = ['nome', 'descricao', 'quantidade', 'creator_id'];
 
     public function getNameLinkAttribute()
     {
         $title = __('app.show_detail_title', [
-            'name' => $this->name, 'type' => __('editora.editora'),
+            'nome' => $this->nome, 'type' => __('editora.editora'),
         ]);
         $link = '<a href="'.route('editoras.show', $this).'"';
         $link .= ' title="'.$title.'">';
-        $link .= $this->name;
+        $link .= $this->nome;
         $link .= '</a>';
 
         return $link;

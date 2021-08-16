@@ -28,6 +28,11 @@ return [
     'undeleteable'   => 'Autor data cannot be deleted.',
 
     // Attributes
-    'name'           => 'Autor Name',
-    'description'    => 'Autor Description',
+    'name'           => 'Nome',
+    'description'    => 'Biografia',
+    'nome'           => 'Nome',
+    'biografia'    => 'Biografia',
+    'ano_nascimento'    => 'Ano de Nascimento',
+    'nacionalidade'    => 'Nacionalidade',
+    'quantidade'    => 'Quantidade',
 ];

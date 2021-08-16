@@ -29,8 +29,8 @@
                 <thead>
                     <tr>
                         <th class="text-center">{{ __('app.table_no') }}</th>
-                        <th>{{ __('genero.name') }}</th>
-                        <th>{{ __('genero.description') }}</th>
+                        <th>{{ __('genero.nome') }}</th>
+                        <th>{{ __('genero.descricao') }}</th>
                         <th class="text-center">{{ __('app.action') }}</th>
                     </tr>
                 </thead>
@@ -39,7 +39,7 @@
                     <tr>
                         <td class="text-center">{{ $generos->firstItem() + $key }}</td>
                         <td>{!! $genero->name_link !!}</td>
-                        <td>{{ $genero->description }}</td>
+                        <td>{{ $genero->descricao }}</td>
                         <td class="text-center">
                             @can('view', $genero)
                                 <a href="{{ route('generos.show', $genero) }}" id="show-genero-{{ $genero->id }}">{{ __('app.show') }}</a>

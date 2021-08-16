@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Livro;
+use App\Models\Autor;
+use App\Models\Editora;
+use App\Models\Genero;
 use Illuminate\Http\Request;
 
 class LivroController extends Controller
@@ -15,7 +18,7 @@ class LivroController extends Controller
     public function index()
     {
         $livroQuery = Livro::query();
-        $livroQuery->where('name', 'like', '%'.request('q').'%');
+        $livroQuery->where('titulo', 'like', '%'.request('q').'%');
         $livros = $livroQuery->paginate(25);
 
         return view('livros.index', compact('livros'));
@@ -29,8 +32,10 @@ class LivroController extends Controller
     public function create()
     {
         $this->authorize('create', new Livro);
-
-        return view('livros.create');
+		$data['lista_autor'] = Autor::get();
+		$data['lista_editora']  = Editora::get();
+		$data['lista_genero']  = Genero::get();
+        return view('livros.create', $data);
     }
 
     /**
@@ -44,8 +49,12 @@ class LivroController extends Controller
         $this->authorize('create', new Livro);
 
         $newLivro = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
+            'titulo'        => 'required|max:60',
+            'resumo'        => 'nullable|max:255',
+            'ano_lancamento'      => 'required|integer',
+            'autor_id'      => 'required',
+            'editora_id'    => 'required',
+            'genero_id'    => 'required',
         ]);
         $newLivro['creator_id'] = auth()->id();
 
@@ -74,8 +83,11 @@ class LivroController extends Controller
     public function edit(Livro $livro)
     {
         $this->authorize('update', $livro);
+		$data['lista_autor'] = Autor::get();
+		$data['lista_editora']  = Editora::get();
+		$data['lista_genero']  = Genero::get();
 
-        return view('livros.edit', compact('livro'));
+        return view('livros.edit', compact('livro'), $data);
     }
 
     /**
@@ -90,8 +102,12 @@ class LivroController extends Controller
         $this->authorize('update', $livro);
 
         $livroData = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
+            'titulo'        => 'required|max:60',
+            'resumo'        => 'nullable|max:255',
+            'ano_lancamento'      => 'required|integer',
+            'autor_id'      => 'required',
+            'editora_id'    => 'required',
+            'genero_id'    => 'required',
         ]);
         $livro->update($livroData);
 

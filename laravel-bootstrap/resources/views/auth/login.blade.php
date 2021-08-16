@@ -1,5 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.anon')
 
+@section('custom_head')
+<style>
+body{
+    background: url(/assets/images/wp3348673.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;	
+}
+.card {
+    background-color: rgba(255,255,255,0.4);
+}
+.bg-white {
+    background-color: rgba(255,255,255,0.6)!impotant;
+}
+</style>
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

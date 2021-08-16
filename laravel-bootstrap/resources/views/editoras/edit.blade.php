@@ -10,10 +10,10 @@
             <div class="card">
                 <div class="card-header">{{ __('editora.delete') }}</div>
                 <div class="card-body">
-                    <label class="form-label text-primary">{{ __('editora.name') }}</label>
-                    <p>{{ $editora->name }}</p>
-                    <label class="form-label text-primary">{{ __('editora.description') }}</label>
-                    <p>{{ $editora->description }}</p>
+                    <label class="form-label text-primary">{{ __('editora.nome') }}</label>
+                    <p>{{ $editora->nome }}</p>
+                    <label class="form-label text-primary">{{ __('editora.descricao') }}</label>
+                    <p>{{ $editora->descricao }}</p>
                     {!! $errors->first('editora_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                 </div>
                 <hr style="margin:0">
@@ -35,14 +35,14 @@
                 {{ csrf_field() }} {{ method_field('patch') }}
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="name" class="form-label">{{ __('editora.name') }} <span class="form-required">*</span></label>
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $editora->name) }}" required>
-                        {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        <label for="nome" class="form-label">{{ __('editora.nome') }} <span class="form-required">*</span></label>
+                        <input id="nome" type="text" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" name="nome" value="{{ old('nome', $editora->nome) }}" required>
+                        {!! $errors->first('nome', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
-                        <label for="description" class="form-label">{{ __('editora.description') }}</label>
-                        <textarea id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" rows="4">{{ old('description', $editora->description) }}</textarea>
-                        {!! $errors->first('description', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        <label for="descricao" class="form-label">{{ __('editora.descricao') }}</label>
+                        <textarea id="descricao" class="form-control{{ $errors->has('descricao') ? ' is-invalid' : '' }}" name="descricao" rows="4">{{ old('descricao', $editora->descricao) }}</textarea>
+                        {!! $errors->first('descricao', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                 </div>
                 <div class="card-footer">

@@ -19,19 +19,19 @@
                 <hr style="margin:0">
                 <div class="card-body text-danger">{{ __('autor.delete_confirm') }}</div>
                 <div class="card-footer">
-                    <form method="POST" action="{{ route('autors.destroy', $autor) }}" accept-charset="UTF-8" onsubmit="return confirm(&quot;{{ __('app.delete_confirm') }}&quot;)" class="del-form float-right" style="display: inline;">
+                    <form method="POST" action="{{ route('autores.destroy', $autor) }}" accept-charset="UTF-8" onsubmit="return confirm(&quot;{{ __('app.delete_confirm') }}&quot;)" class="del-form float-right" style="display: inline;">
                         {{ csrf_field() }} {{ method_field('delete') }}
                         <input name="autor_id" type="hidden" value="{{ $autor->id }}">
                         <button type="submit" class="btn btn-danger">{{ __('app.delete_confirm_button') }}</button>
                     </form>
-                    <a href="{{ route('autors.edit', $autor) }}" class="btn btn-link">{{ __('app.cancel') }}</a>
+                    <a href="{{ route('autores.edit', $autor) }}" class="btn btn-link">{{ __('app.cancel') }}</a>
                 </div>
             </div>
         @endcan
         @else
         <div class="card">
             <div class="card-header">{{ __('autor.edit') }}</div>
-            <form method="POST" action="{{ route('autors.update', $autor) }}" accept-charset="UTF-8">
+            <form method="POST" action="{{ route('autores.update', $autor) }}" accept-charset="UTF-8">
                 {{ csrf_field() }} {{ method_field('patch') }}
                 <div class="card-body">
                     <div class="form-group">
@@ -47,9 +47,9 @@
                 </div>
                 <div class="card-footer">
                     <input type="submit" value="{{ __('autor.update') }}" class="btn btn-success">
-                    <a href="{{ route('autors.show', $autor) }}" class="btn btn-link">{{ __('app.cancel') }}</a>
+                    <a href="{{ route('autores.show', $autor) }}" class="btn btn-link">{{ __('app.cancel') }}</a>
                     @can('delete', $autor)
-                        <a href="{{ route('autors.edit', [$autor, 'action' => 'delete']) }}" id="del-autor-{{ $autor->id }}" class="btn btn-danger float-right">{{ __('app.delete') }}</a>
+                        <a href="{{ route('autores.edit', [$autor, 'action' => 'delete']) }}" id="del-autor-{{ $autor->id }}" class="btn btn-danger float-right">{{ __('app.delete') }}</a>
                     @endcan
                 </div>
             </form>

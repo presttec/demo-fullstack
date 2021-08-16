@@ -10,8 +10,8 @@
             <div class="card-body">
                 <table class="table table-sm">
                     <tbody>
-                        <tr><td>{{ __('editora.name') }}</td><td>{{ $editora->name }}</td></tr>
-                        <tr><td>{{ __('editora.description') }}</td><td>{{ $editora->description }}</td></tr>
+                        <tr><td>{{ __('editora.nome') }}</td><td>{{ $editora->nome }}</td></tr>
+                        <tr><td>{{ __('editora.descricao') }}</td><td>{{ $editora->descricao }}</td></tr>
                     </tbody>
                 </table>
             </div>

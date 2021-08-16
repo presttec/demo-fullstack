@@ -35,14 +35,44 @@
                 {{ csrf_field() }} {{ method_field('patch') }}
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="name" class="form-label">{{ __('livro.name') }} <span class="form-required">*</span></label>
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $livro->name) }}" required>
-                        {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        <label for="name" class="form-label">{{ __('livro.titulo') }} <span class="form-required">*</span></label>
+                        <input id="name" type="text" class="form-control{{ $errors->has('titulo') ? ' is-invalid' : '' }}" name="titulo" value="{{ old('name', $livro->titulo) }}" required>
+                        {!! $errors->first('titulo', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
-                        <label for="description" class="form-label">{{ __('livro.description') }}</label>
-                        <textarea id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" rows="4">{{ old('description', $livro->description) }}</textarea>
-                        {!! $errors->first('description', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        <label for="resumo" class="form-label">{{ __('livro.resumo') }}</label>
+                        <textarea id="resumo" class="form-control{{ $errors->has('resumo') ? ' is-invalid' : '' }}" name="resumo" rows="4">{{ old('resumo', $livro->resumo) }}</textarea>
+                        {!! $errors->first('resumo', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    <div class="form-group">
+                        <label for="autor_id" class="form-label">{{ __('livro.autor_id') }} <span class="form-required">*</span></label>
+						<select id="autor_id" class="form-control{{ $errors->has('autor_id') ? ' is-invalid' : '' }}" name="autor_id" required>
+							<option value="">Selecine</option>
+							@foreach ($lista_autor as $reg)
+							<option value="{{ $reg->id}}" {{($livro->autor_id == $reg->id)?"selected":"" }}>{{$reg->nome}}</option>
+							@endforeach
+						</select>                        
+                        {!! $errors->first('autor_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>					
+                    <div class="form-group">
+                        <label for="editora_id" class="form-label">{{ __('livro.editora_id') }} <span class="form-required">*</span></label>
+						<select id="editora_id" class="form-control{{ $errors->has('editora_id') ? ' is-invalid' : '' }}" name="editora_id" value="{{ old('editora_id') }}" required>
+							<option value="">Selecine</option>
+							@foreach ($lista_editora as $reg)
+							<option value="{{ $reg->id}}" {{($livro->editora_id == $reg->id)?"selected":"" }}>{{$reg->nome}}</option>
+							@endforeach
+						</select>                        
+                        {!! $errors->first('editora_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    <div class="form-group">
+                        <label for="genero_id" class="form-label">{{ __('livro.genero_id') }} <span class="form-required">*</span></label>
+						<select id="genero_id" class="form-control{{ $errors->has('genero_id') ? ' is-invalid' : '' }}" name="genero_id" value="{{ old('genero_id') }}" required>
+							<option value="">Selecine</option>
+							@foreach ($lista_genero as $reg)
+							<option value="{{ $reg->id}}" {{($livro->genero_id == $reg->id)?"selected":"" }}>{{$reg->nome}}</option>
+							@endforeach
+						</select>                        
+                        {!! $errors->first('genero_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                 </div>
                 <div class="card-footer">
